@@ -45,9 +45,12 @@ const Index = ({ transactions }) => {
                           {new Date(transaction.tanggal).toLocaleString()}
                         </td>
                         <td className="relative whitespace-nowrap py-4 pl-3 pr-4 text-right text-sm font-medium sm:pr-6">
-                          <Link href={route('transactions.show', transaction.id)} className="text-indigo-600 hover:text-indigo-900">
+                          <Link href={route('transaction.show', transaction.id)} className="text-indigo-600 hover:text-indigo-900">
                             View Details
                           </Link>
+                          <Link href={route('transaction.destroy', transaction.id)} method="delete" as="button" className="ml-4 text-red-600 hover:text-red-900">
+                                                    Delete
+                                                  </Link>
                         </td>
                       </tr>
                     ))}

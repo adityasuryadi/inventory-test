@@ -19,7 +19,7 @@ class TransactionController extends Controller
 
     public function index(): Response
     {
-        $transactions = [];
+        $transactions = $this->transactionService->findAll();
         return inertia('Transactions/Index', ['transactions' => $transactions]);
     }
 
@@ -32,5 +32,16 @@ class TransactionController extends Controller
     public function store(TransactionCreateRequest $request)
     {
         $this->transactionService->save($request);
+    }
+
+    public function show($id): Response
+    {
+        $transaction = $this->transactionService->findById($id);
+        return inertia('Transactions/Show', ['transaction' => $transaction]);
+    }
+
+    public function destroy($id)
+    {
+        $this->transactionService->delete($id);
     }
 }

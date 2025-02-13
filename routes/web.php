@@ -1,7 +1,9 @@
 <?php
 
+use App\Http\Controllers\MatchController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ScoreController;
 use App\Http\Controllers\TransactionController;
 use App\Models\Transaction;
 use Illuminate\Foundation\Application;
@@ -10,24 +12,9 @@ use Inertia\Inertia;
 
 Route::resource('product', ProductController::class);
 Route::resource('transaction', TransactionController::class);
-
-// Route::get('/', function () {
-//     return Inertia::render('Welcome', [
-//         'canLogin' => Route::has('login'),
-//         'canRegister' => Route::has('register'),
-//         'laravelVersion' => Application::VERSION,
-//         'phpVersion' => PHP_VERSION,
-//     ]);
-// });
-
-// Route::get('/dashboard', function () {
-//     return Inertia::render('Dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-// require __DIR__.'/auth.php';
+Route::get('match', [MatchController::class, 'index'])->name('match.index');
+Route::get('match/create', [MatchController::class, 'create'])->name('match.create');
+Route::get('match/{id}', [MatchController::class, 'show'])->name('match.show');
+Route::post('match', [MatchController::class, 'store'])->name('match.store');
+// Route::get('match/{id}', [ScoreController::class, 'show']);
+Route::resource('score', ScoreController::class);

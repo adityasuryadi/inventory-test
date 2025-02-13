@@ -32,6 +32,7 @@ class TransactionController extends Controller
     public function store(TransactionCreateRequest $request)
     {
         $this->transactionService->save($request);
+        return redirect()->route('transaction.index');
     }
 
     public function show($id): Response

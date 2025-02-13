@@ -9,7 +9,7 @@ class TransactionDetail extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['id_transaksi', 'id_produk', 'quantity'];
+    protected $fillable = ['id_transaksi', 'id_produk', 'quantity', 'harga'];
     protected $table = 'detail_transaksi';
 
     public function transaction()

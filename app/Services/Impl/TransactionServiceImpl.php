@@ -3,6 +3,7 @@
 namespace App\Services\Impl;
 
 use App\Http\Requests\TransactionCreateRequest;
+use App\Models\Product;
 use App\Services\TransactionService;
 use App\Models\Transaction;
 use App\Models\TransactionDetail;
@@ -23,7 +24,7 @@ class TransactionServiceImpl implements TransactionService
 
     public function findById(int $id): ?Transaction
     {
-        $model = Transaction::with('details')->find($id);
+        $model = Transaction::with('details.product')->find($id);
         if (!$model) {
             return null;
         }
@@ -46,10 +47,12 @@ class TransactionServiceImpl implements TransactionService
                 $model->save();
 
                 foreach ($requests->details as $request) {
+                    $product = Product::find($request['id_produk']);
                     $detailModel = new TransactionDetail();
                     $detailModel->id_transaksi = $model->id;
                     $detailModel->id_produk = $request['id_produk'];
                     $detailModel->quantity = $request['quantity'];
+                    $detailModel->harga = $product->harga;
                     $detailModel->save();
 
                     $this->productRepository->decrementStock($request['id_produk'], $request['quantity']);
@@ -68,7 +71,7 @@ class TransactionServiceImpl implements TransactionService
     {
         $lastId = Transaction::max('id') ?? 0;
         $nextId = $lastId + 1;
-        return 'TRX' . date('Ymd') . str_pad($nextId, 4, '0', STR_PAD_LEFT);
+        return $nextId .  date('Ymd');
     }
 
     public function delete(int $id): bool

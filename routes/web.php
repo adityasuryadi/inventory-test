@@ -11,6 +11,9 @@ use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::resource('product', ProductController::class);
 Route::resource('transaction', TransactionController::class);
 Route::get('kurs', [KursController::class, 'getKurs']);

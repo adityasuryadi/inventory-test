@@ -30,7 +30,7 @@ class MatchController extends Controller
         $match = Matches::create($validated);
         $match->scores()->create(['home_score' => 0, 'away_score' => 0]);
 
-        return redirect()->back();
+        return redirect()->route('match.index');
     }
 
     public function show($id)

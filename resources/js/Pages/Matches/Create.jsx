@@ -1,6 +1,7 @@
 import React from 'react';
 import { useForm, usePage } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
+import LayoutMatch from '@/Layouts/LayoutMatch';
 
 const Create = () => {
   const { data, setData, post, processing, errors } = useForm({
@@ -15,7 +16,7 @@ const Create = () => {
   };
 
   return (
-    <Layout>
+    <LayoutMatch>
       <div className="md:grid md:grid-cols-3 md:gap-6">
         <div className="md:col-span-1">
           <div className="px-4 sm:px-0">
@@ -82,7 +83,7 @@ const Create = () => {
           </form>
         </div>
       </div>
-    </Layout>
+    </LayoutMatch>
   );
 };
 

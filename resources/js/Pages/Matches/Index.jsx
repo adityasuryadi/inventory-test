@@ -2,11 +2,12 @@ import React from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import Layout from '@/Layouts/Layout';
 import { useRoute } from 'ziggy-js';
+import LayoutMatch from '@/Layouts/LayoutMatch';
 
 const Index = ({ matches }) => {
 const route = useRoute();
   return (
-    <Layout>
+    <LayoutMatch>
       <div className="sm:flex sm:items-center">
         <div className="sm:flex-auto">
           <h1 className="text-xl font-semibold text-gray-900">Matches</h1>
@@ -65,7 +66,7 @@ const route = useRoute();
           </div>
         </div>
       </div>
-    </Layout>
+    </LayoutMatch>
   );
 };
 

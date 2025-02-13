@@ -10,7 +10,7 @@
 <body>
     <ul>
         <li><a href="/transaction">Task 1</a></li>
-        <li><a href="/transaction">Task 2</a></li>
+        <li><a href="/kurs">Task 2</a></li>
         <li><a href="/match">Task 3</a></li>
     </ul>
 </body>

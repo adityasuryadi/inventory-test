@@ -1,9 +1,18 @@
-import React from 'react';
+import React,{useEffect} from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { useRoute } from 'ziggy-js';
+import Echo from 'laravel-echo';
 const Layout = ({ children }) => {
   const { flash } = usePage().props;
   const route = useRoute();
+
+  // useEffect(() => {
+  //   Echo.channel('score-updates').listen('update.score', (e) => console.warn('Score updated!',e));
+  
+  //   return () => {
+  //     Echo.channel('score-updates').stopListening('update.score')
+  //   }
+  // }, [])
 
   return (
     <div className="min-h-screen bg-gray-100">

@@ -10,4 +10,5 @@ interface TransactionRepository
     public function findAll(): array;
     public function save(Transaction $transaction): bool;
     public function generateTransactionCode(): string;
+    public function delete(int $id): bool;
 }

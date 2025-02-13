@@ -28,14 +28,12 @@ class TransactionServiceImpl implements TransactionService
             return null;
         }
 
-        return $this->toEntity($model);
+        return $model;
     }
 
     public function findAll(): array
     {
-        return Transaction::with('details')->get()->map(function ($model) {
-            return $this->toEntity($model);
-        })->toArray();
+        return Transaction::with('details')->get()->toArray();
     }
 
     public function save(TransactionCreateRequest $requests): Transaction
@@ -73,21 +71,8 @@ class TransactionServiceImpl implements TransactionService
         return 'TRX' . date('Ymd') . str_pad($nextId, 4, '0', STR_PAD_LEFT);
     }
 
-    private function toEntity(Transaction $model): Transaction
+    public function delete(int $id): bool
     {
-        $transaction = new Transaction(
-            $model->kode_transaksi,
-            new DateTime($model->tanggal)
-        );
-
-        foreach ($model->details as $detail) {
-            $transaction->addDetail(new TransactionDetail(
-                $detail->id_transaksi,
-                $detail->id_produk,
-                $detail->quantity
-            ));
-        }
-
-        return $transaction;
+        return $this->transactionRepository->delete($id);
     }
 }

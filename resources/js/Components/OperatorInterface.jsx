@@ -58,6 +58,9 @@ return () => {
       <button onClick={updateScore} className="mt-2 bg-blue-500 text-white px-4 py-2 rounded">
         Update Score
       </button>
+      <br />
+      <br />
+      <a href={route('score.show', match.id)} target="_blank" className="mt-2 bg-green-400 text-white px-4 py-2 rounded">Open Score Board</a>
     </div>
   )
 }

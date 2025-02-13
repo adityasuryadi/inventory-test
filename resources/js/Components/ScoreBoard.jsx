@@ -5,7 +5,6 @@ import ScoreboardMinimalist from "@/Components/ScoreboardMinimalist"
 import ScoreboardNeon from "@/Components/ScoreboardNeon"
 
 export default function ScoreBoard({ match }) {
-    const latestScore = match.scores[match.scores.length - 1]
     const [homeScore, setHomeScore] = useState(match.scores[match.scores.length - 1].home_score)
     const [awayScore, setAwayScore] = useState(match.scores[match.scores.length - 1].away_score)
   const data = {

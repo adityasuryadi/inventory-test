@@ -1,7 +1,7 @@
 import { usePage } from "@inertiajs/react"
-import React, { useEffect } from "react";
-import ScoreBoard from "@/Components/ScoreBoard"
+import React,{useState} from "react";
 import OperatorInterface from "@/Components/OperatorInterface"
+import ScoreBoardOperator from "@/Components/ScoreBoardOperator"
 
 export default function Index() {
   const { match } = usePage().props
@@ -11,7 +11,7 @@ export default function Index() {
       <h1 className="text-2xl font-bold mb-4">Sport Scoreboard</h1>
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div key={match.id} className="border p-4 rounded">
-            <ScoreBoard match={match} />
+            <ScoreBoardOperator match={match} />
             <OperatorInterface match={match} />
           </div>
       </div>

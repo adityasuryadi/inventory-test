@@ -2,7 +2,7 @@ import React,{useEffect} from 'react';
 import { Link, usePage } from '@inertiajs/react';
 import { useRoute } from 'ziggy-js';
 import Echo from 'laravel-echo';
-const Layout = ({ children }) => {
+const LayoutMatch = ({ children }) => {
   const { flash } = usePage().props;
   const route = useRoute();
 
@@ -19,16 +19,10 @@ const Layout = ({ children }) => {
               </div>
               <div className="hidden sm:ml-6 sm:flex sm:space-x-8">
                 <Link
-                  href={route('product.index')}
+                  href={route('match.index')}
                   className="border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
                 >
-                  Products
-                </Link>
-                <Link
-                  href={route('transaction.index')}
-                  className="border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium"
-                >
-                  Transactions
+                  Matches
                 </Link>
               </div>
             </div>
@@ -53,4 +47,4 @@ const Layout = ({ children }) => {
   );
 };
 
-export default Layout;
+export default LayoutMatch;

@@ -21,7 +21,7 @@ cd inventory-test
 composer install
 
 # Install Node.js dependencies
-npm install
+yarn install
 ```
 
 ### 3. Konfigurasi Environment
